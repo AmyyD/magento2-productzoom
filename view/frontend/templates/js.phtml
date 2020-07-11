@@ -28,8 +28,8 @@ $data       = $helper->getConfigModule('general');
                     if(fotorama.activeFrame.full) img.data('zoom-image', fotorama.activeFrame.full);
                 }
                 var defaults = {
-                    zoomWindowWidth : img.height(),
-                    zoomWindowHeight: img.width()
+                    zoomWindowWidth : img.width(),
+                    zoomWindowHeight: img.height()
                 };
                 var settings = $.extend(defaults, options);
                 img.elevateZoom(settings);
