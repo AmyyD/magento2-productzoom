@@ -1,31 +1,39 @@
 <?php
 $jsonHelper = $this->helper('Magento\Framework\Json\Helper\Data');
-$helper 	= $this->helper('Magepow\Productzoom\Helper\Data');
-$data 		= $helper->getConfigModule('general');
+$helper     = $this->helper('Magepow\Productzoom\Helper\Data');
+$data       = $helper->getConfigModule('general');
 ?>
 <script type="text/javascript">
     require([
         'jquery',
         'magepow/elevatezoom',
         ], function($){
-        	"use strict";
-        	if( $(window).width() < 768 ) return;
-			var options = <?php echo is_array($data) ? $jsonHelper->jsonEncode($data) : '{}' ?>;
-            $('.product.media').on('fotorama:load fotorama:showend', function (e, fotorama, extra) {
-            	if($('body').hasClass('fotorama__fullscreen')) return;
-            	$('.zoomContainer').remove();
-            	var img = $('.product.media .fotorama__stage .fotorama__active img');
-            	if(!img.length) return;
+            "use strict";
+            if( $(window).width() < 768 ) return;
+            var options = <?php echo is_array($data) ? $jsonHelper->jsonEncode($data) : '{}' ?>;
+            $(document).on('fotorama:load fotorama:showend fotorama:fullscreenenter fotorama:fullscreenexit', function (event, fotorama, extra) {
+                $('.zoomContainer').remove();
+                var zoomThumnailActive = true;
+                var zoomFullscreen     = true;
+                var prefixClass        = zoomThumnailActive ? '.fotorama__active' : '.fotorama__stage .fotorama__active';
+                var fullscreen         = $('body').hasClass('fotorama__fullscreen');
+                if(event.type=='fotorama:fullscreenenter' && zoomFullscreen || fullscreen && zoomFullscreen){
+                    var img = $(event.target).find( prefixClass + ' .fotorama__img--full' );
+                } else {
+                    var img = $(event.target).find( prefixClass + ' .fotorama__img' );
+                }
+                if(!img.length) return;
                 if(fotorama.activeFrame.type){
                     if(fotorama.activeFrame.type == 'video') return;
                     if(fotorama.activeFrame.full) img.data('zoom-image', fotorama.activeFrame.full);
                 }
-            	var defaults = {
-            		zoomWindowWidth	: img.height(),
-            		zoomWindowHeight: img.width()
-            	};
-            	var settings = $.extend(defaults, options);
+                var defaults = {
+                    zoomWindowWidth : img.height(),
+                    zoomWindowHeight: img.width()
+                };
+                var settings = $.extend(defaults, options);
                 img.elevateZoom(settings);
-	        });
+            });
+
     });
 </script>
