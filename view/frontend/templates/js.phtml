@@ -9,36 +9,6 @@ $data       = $helper->getConfigModule('general');
         'magepow/elevatezoom',
         ], function($){
             "use strict";
-
-            /** Elevate Zoom Destroy **/
-            $.fn.destroyElevateZoom = function() {
-                var ez = $(this).data('elevateZoom');
-                if(!ez) return this;
-                if(ez.hasOwnProperty('zoomContainer')){
-                    $(this).data().elevateZoom.zoomContainer.remove();
-                }
-                $(this).removeData('elevateZoom');
-                $(this).removeData('zoom-image');
-                $(this).removeData('image');
-            };
-
-            $.fn.changeStateElevateZoom = function(active=true) {
-                var ez = $(this).data('elevateZoom');
-                if(!ez) return this;
-                if(active){
-                    ez.changeState('enable');
-                    if(ez.hasOwnProperty('zoomContainer')){
-                        ez.zoomContainer.show();
-                    }                  
-                } else {
-                    ez.changeState('disable');
-                    if(ez.hasOwnProperty('zoomContainer')){
-                        ez.zoomContainer.hide();
-                    }                  
-                }
-                return this;
-            };
-
             if( $(window).width() < 768 ) return;
             var options = <?php echo is_array($data) ? $jsonHelper->jsonEncode($data) : '{}' ?>;
             $(document).on('fotorama:load fotorama:showend fotorama:fullscreenenter fotorama:fullscreenexit', function (event, fotorama, extra) {
