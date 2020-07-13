@@ -43,7 +43,6 @@ $data       = $helper->getConfigModule('general');
             var options = <?php echo is_array($data) ? $jsonHelper->jsonEncode($data) : '{}' ?>;
             $(document).on('fotorama:load fotorama:showend fotorama:fullscreenenter fotorama:fullscreenexit', function (event, fotorama, extra) {
                 $('.zoomContainer').remove();
-                console.log(event.type);
                 if(event.type == 'fotorama:fullscreenenter') return;
                 if( fotorama.activeFrame.type != 'image' || $('body').hasClass('fotorama__fullscreen') ) return;
                 var img = $('.product.media .fotorama__stage .fotorama__active .fotorama__img');
