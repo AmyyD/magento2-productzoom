@@ -12,22 +12,29 @@ $data       = $helper->getConfigModule('general');
 
             /** Elevate Zoom Destroy **/
             $.fn.destroyElevateZoom = function() {
-                if(!$(this).data('elevateZoom')) return this;
-                $(this).data().elevateZoom.zoomContainer.remove();
+                var ez = $(this).data('elevateZoom');
+                if(!ez) return this;
+                if(ez.hasOwnProperty('zoomContainer')){
+                    $(this).data().elevateZoom.zoomContainer.remove();
+                }
                 $(this).removeData('elevateZoom');
                 $(this).removeData('zoom-image');
                 $(this).removeData('image');
-                return this;
             };
 
             $.fn.changeStateElevateZoom = function(active=true) {
-                if(!$(this).data('elevateZoom')) return this;
+                var ez = $(this).data('elevateZoom');
+                if(!ez) return this;
                 if(active){
-                    $(this).data('elevateZoom').changeState('enable');
-                    $(this).data().elevateZoom.zoomContainer.show();                    
+                    ez.changeState('enable');
+                    if(ez.hasOwnProperty('zoomContainer')){
+                        ez.zoomContainer.show();
+                    }                  
                 } else {
-                    $(this).data('elevateZoom').changeState('disable');
-                    $(this).data().elevateZoom.zoomContainer.hide();                       
+                    ez.changeState('disable');
+                    if(ez.hasOwnProperty('zoomContainer')){
+                        ez.zoomContainer.hide();
+                    }                  
                 }
                 return this;
             };
@@ -35,67 +42,19 @@ $data       = $helper->getConfigModule('general');
             if( $(window).width() < 768 ) return;
             var options = <?php echo is_array($data) ? $jsonHelper->jsonEncode($data) : '{}' ?>;
             $(document).on('fotorama:load fotorama:showend fotorama:fullscreenenter fotorama:fullscreenexit', function (event, fotorama, extra) {
-                var zoomThumnail   = true;
-                var hoverSwitch    = true;
-                var zoomFullscreen = true;
+                $('.zoomContainer').remove();
                 console.log(event.type);
-                var fullscreen     = $('body').hasClass('fotorama__fullscreen');
-                if(event.type=='fotorama:fullscreenenter' && zoomFullscreen || fullscreen && zoomFullscreen){
-                    var img   = $(event.target).find('.fotorama__stage .fotorama__loaded--full.fotorama__active .fotorama__img--full' );
-                    var image = $(event.target).find('.fotorama__stage .fotorama__loaded--full').not('.fotorama__active');
-                } else {
-                    var img   = $(event.target).find('.fotorama__stage .fotorama__loaded.fotorama__active .fotorama__img' );
-                    var image = $(event.target).find('.fotorama__stage .fotorama__loaded').not('.fotorama__active');
-                }
-
+                if(event.type == 'fotorama:fullscreenenter') return;
+                if( fotorama.activeFrame.type != 'image' || $('body').hasClass('fotorama__fullscreen') ) return;
+                var img = $('.product.media .fotorama__stage .fotorama__active .fotorama__img');
+                if(!img.length) return;
                 var defaults = {
                     zoomWindowWidth : img.width(),
                     zoomWindowHeight: img.height()
                 };
                 var settings = $.extend(defaults, options);
-                image.each(function() {
-                    $(this).find('.fotorama__img').changeStateElevateZoom(false);
-                });
-                if(img.length && fotorama.activeFrame.type == 'image'){
-                    var ez = img.data('elevateZoom');
-                    if(ez && ez.hasOwnProperty('zoomContainer')){
-                        img.changeStateElevateZoom(true);
-                    } else {
-                        if(fotorama.activeFrame.full) img.data('zoom-image', fotorama.activeFrame.full);
-                        img.elevateZoom(settings);
-                    }
-                }
-
-                if(fotorama.options.nav == 'thumbs'){
-                    if(fotorama.data){
-                        var navdir = fotorama.options.navdir;
-                        var settingsThumb = (navdir == 'vertical') ? settings : $.extend(settings, {'zoomWindowPosition': 14});
-                        $.each(fotorama.data, function() {
-                            // console.log(this);
-                            var index = this.position - 1;
-                            var img = this.$navThumbFrame.find('.fotorama__img');
-                            if(zoomThumnail && this.type == 'image'){
-                                if(img.data('elevateZoom')) return;
-                                img.data('zoom-image', this.full);
-                                img.elevateZoom(settingsThumb);
-                                var zoomActive = true;
-                                img.on('click', function(){
-                                    // console.log('click');
-                                    zoomActive = !zoomActive;
-                                    fotorama.show(index);
-                                    img.changeStateElevateZoom(zoomActive);
-                                });                                
-                            } else if(hoverSwitch) {
-                                img.on('hover', function(){
-                                    fotorama.show(index);
-                                });
-                            }
-                        });                        
-                    }
-                } 
-
+                if(fotorama.activeFrame.full) img.data('zoom-image', fotorama.activeFrame.full);
+                img.elevateZoom(settings);
             });
-
     });
 </script>
-s
