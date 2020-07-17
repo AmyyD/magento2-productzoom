@@ -10,7 +10,9 @@ $data       = $helper->getConfigModule('general');
         ], function($){
             "use strict";
             if( $(window).width() < 768 ) return;
+
             var options = <?php echo is_array($data) ? $jsonHelper->jsonEncode($data) : '{}' ?>;
+            $('head').append('<style type="text/css">.zoomContainer{z-index:' + options.zIndex + '}</style>');
             $(document).on('fotorama:load fotorama:showend fotorama:fullscreenenter fotorama:fullscreenexit', function (event, fotorama, extra) {
                 $('.zoomContainer').remove();
                 if(event.type == 'fotorama:fullscreenenter') return;

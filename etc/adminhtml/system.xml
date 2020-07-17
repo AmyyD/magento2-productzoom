@@ -45,6 +45,10 @@
                     <frontend_model>Magepow\Productzoom\Block\System\Config\Form\Field\Position</frontend_model>
                     <depends><field id="zoomType" separator=",">window</field></depends>
                 </field>
+                <field id="zIndex" translate="label comment" type="text" sortOrder="32"  showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>z-index window zoom</label>
+                    <depends><field id="zoomType" separator=",">window</field></depends>
+                </field>
                 <field id="zoomWindowWidth" translate="label comment" type="text" sortOrder="35"  showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Zoom window width</label>
                     <comment>Width of the zoomWindow (Note: zoomType must be "window")</comment>

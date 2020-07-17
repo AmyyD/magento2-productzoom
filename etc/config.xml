@@ -12,6 +12,7 @@
                 <enabled>1</enabled>
                 <responsive>false</responsive>
                 <scrollZoom>true</scrollZoom>
+                <zIndex>999</zIndex>
                 <imageCrossfade>false</imageCrossfade>
                 <loadingIcon>false</loadingIcon>
                 <cursor>default</cursor>
