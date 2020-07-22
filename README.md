@@ -15,7 +15,7 @@ Run the following command in Magento 2 root folder:
 `php bin/magento cache:flush`
 ## 2. Magepow Product Zoom user guide
 ### General Configuration
-#### Enable Magepow Categories
+#### Enable Magepow Product Zoom
 Go to `Admin Panel > Stores > Settings > Configuration > Magepow > Product Zoom`
 ![enable-module-img](https://github.com/magepow/magento2-productzoom/blob/master/media/enable.PNG)
 
