@@ -2,7 +2,20 @@
 **Magento 2 Product Zoom extension**
 
 ## 1. How to install Magento 2 Product Zoom
-### ✓ Install Magepow Product Zoom
+
+### a. Install via composer (recommend)
+
+Run the following commands in Magento 2 root folder:
+
+```
+composer require magepow/magento2-productzoom
+php bin/magento setup:upgrade
+php bin/magento setup:static-content:deploy -f
+```
+
+### b. Install manual
+
+
 * extract files from an archive
 
 * deploy files into Magento2 folder `app/code/Magepow/Productzoom`
