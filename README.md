@@ -8,7 +8,7 @@
 Run the following commands in Magento 2 root folder:
 
 ```
-composer require magepow/magento2-productzoom
+composer require magepow/productzoom
 php bin/magento setup:upgrade
 php bin/magento setup:static-content:deploy -f
 ```
