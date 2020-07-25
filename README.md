@@ -21,11 +21,12 @@ php bin/magento setup:static-content:deploy -f
 * deploy files into Magento2 folder `app/code/Magepow/Productzoom`
 Run the following command in Magento 2 root folder:
 
-`php bin/magento setup:upgrade`
+```
+php bin/magento setup:upgrade
+php bin/magento setup:static-content:deploy -f
+php bin/magento cache:flush
+```
 
-`php bin/magento setup:static-content:deploy -f`
-
-`php bin/magento cache:flush`
 ## 2. Magepow Product Zoom user guide
 ### General Configuration
 #### Enable Magepow Product Zoom
