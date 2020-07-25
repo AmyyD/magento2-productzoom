@@ -114,3 +114,6 @@ Go to `Admin Panel > Stores > Settings > Configuration > Magepow > Product Zoom`
 * [Customization Service](https://magepow.com/customization-service.html)
 
 * [Hire Magento Developer](https://magepow.com/hire-magento-developer.html)
+
+[![Latest Stable Version](https://poser.pugx.org/magepow/productzoom/v/stable)](https://packagist.org/packages/magepow/productzoom)
+[![Total Downloads](https://poser.pugx.org/magepow/productzoom/downloads)](https://packagist.org/packages/magepow/productzoom)
