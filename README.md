@@ -60,6 +60,12 @@ Go to `Admin Panel > Stores > Settings > Configuration > Magepow > Product Zoom`
 ### This Is Result In Frontend
 ![config-module-img](https://github.com/magepow/magento2-productzoom/blob/master/media/frontend.gif)
 
+## Donation
+
+If this project help you reduce time to develop, you can give me a cup of coffee :) 
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/paypalme/alopay)
+
 
 **Free Extensions List**
 
