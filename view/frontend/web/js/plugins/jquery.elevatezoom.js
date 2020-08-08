@@ -844,7 +844,11 @@ if ( typeof Object.create !== 'function' ) {
 					switch (self.options.zoomWindowPosition) { 
 					case 1: //done         
 						self.windowOffsetTop = (self.options.zoomWindowOffety);//DONE - 1
-						self.windowOffsetLeft =(+self.nzWidth); //DONE 1, 2, 3, 4, 16
+						if(!$('body').hasClass('rtl')){
+							self.windowOffsetLeft =(+self.nzWidth); //DONE 1, 2, 3, 4, 16
+						} else {
+							self.windowOffsetLeft =(-self.nzWidth); //DONE 1, 2, 3, 4, 16
+						}
 						break;
 					case 2:
 						if(self.options.zoomWindowHeight > self.nzHeight){ //positive margin

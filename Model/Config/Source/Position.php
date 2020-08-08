@@ -3,8 +3,8 @@
 /**
  * @Author: nguyen
  * @Date:   2020-06-09 20:10:33
- * @Last Modified by:   nguyen
- * @Last Modified time: 2020-07-09 22:35:06
+ * @Last Modified by:   Alex Dong
+ * @Last Modified time: 2020-08-08 16:19:53
  */
 
 namespace Magepow\Productzoom\Model\Config\Source;
@@ -25,7 +25,9 @@ class Position implements \Magento\Framework\Option\ArrayInterface
             9 	=> 9,
             10 	=> 10,
             11 	=> 11,
-            12 	=> 12
+            12  => 12,
+            13  => 13,
+            14  => 14
         ];
     }
 }
