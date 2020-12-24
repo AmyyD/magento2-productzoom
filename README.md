@@ -1,38 +1,9 @@
-# Magento 2 Product image zoom extension
+# Magento 2 Product Zoom Extension
+**Magento 2 Product Zoom extension**
 
-## General information
-Are you selling products on an online Magento store? **Magento 2 Product image zoom extension** is for you!
-When shopping in an online store, the problem that hinders the customer's shopping process is the inability to view product details directly. Understanding this, the Magepow team developed the Product image zoom extension.
+## 1. How to install Magento 2 Product Zoom
 
-This extension allows customers to enlarge product images to see details that they cannot see at normal resolution. 3 zoom types you can use are Window zoom, Inner zoom, and Lens zoom.
-
-- **Window zoom**: Positioning the window can be done by setting a default position and then using x and y offset to adjust. You can also position the window into a container. 
-
-The administrator can customize the size of the Zoom window (width, height) and zoom window offset (x-axis, y-axis) in the admin panel.
-
-![productzoom-windowzoom]()
-- **Inner Zoom**: the zoom can be placed inside of the image
-
-![productzoom-innerzoom](https://github.com/AmyyD/magento2-productzoom/blob/master/media/magento2-productzoom-frontend-innerzoom.png?raw=true)
-
-- **Lens zoom**: You can use the lens zoom setting to "Magnify the image". The image to the least has been constrained so it tucks underneath the image.
-
-![productzoom-lenszoom](https://github.com/AmyyD/magento2-productzoom/blob/master/media/magento2-productzoom-frontend.png?raw=true)
-
-### Magepow_Productzoom Features
-Use 3 Zoom type phù hợp với sản phẩm của bạn
-Product image zoom hover: hover over your product image, scroll forward to enlarge product details, scroll back down to reduce zoom. 
-Smooth zooming with Easing effect and FadeIn & FadeOut Speed.
-Choose Cursor: Options are default, cursor, crosshair
-Support responsive
-Image Cross Fade
-Customize Boder
-Customize Tints
-## How to use Product zoom extension by Magepow
-
-### 1. How to install Magento 2 Product Zoom
-
-#### a. Install via composer (recommend)
+### a. Install via composer (recommend)
 
 Run the following commands in Magento 2 root folder:
 
@@ -42,7 +13,7 @@ php bin/magento setup:upgrade
 php bin/magento setup:static-content:deploy -f
 ```
 
-#### b. Install manual
+### b. Install manual
 
 
 * extract files from an archive
@@ -56,14 +27,14 @@ php bin/magento setup:static-content:deploy -f
 php bin/magento cache:flush
 ```
 
-### 2. Magepow Product Zoom user guide
-#### General Configuration
-##### Enable Magepow Product Zoom
+## 2. Magepow Product Zoom user guide
+### General Configuration
+#### Enable Magepow Product Zoom
 Go to `Admin Panel > Stores > Settings > Configuration > Magepow > Product Zoom`
 ![enable-module-img](https://github.com/magepow/magento2-productzoom/blob/master/media/enable.PNG)
 
 Select `Yes` to enable module.
-##### Setting Magepow Product Zoom
+#### Setting Magepow Product Zoom
 Go to `Admin Panel > Stores > Settings > Configuration > Magepow > Product Zoom`
 ![config-module-img](https://github.com/magepow/magento2-productzoom/blob/master/media/backend_config.PNG)
 * Set to true to activate zoom on mouse scroll. Possible Values: "True", "False"
